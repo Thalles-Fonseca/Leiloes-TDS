@@ -21,8 +21,8 @@ public class ListaVendido extends javax.swing.JFrame {
         modelo.setRowCount(0); // limpa a tabela antes de carregar
 
         String sql = "SELECT id, nome, valor, status FROM produtos WHERE status = 'Vendido'";
-
-        try (Connection conn = Conexao.getConnection();
+           conectaDAO dao= new conectaDAO();
+        try (Connection conn = dao.connectDB();
              PreparedStatement stmt = conn.prepareStatement(sql);
              ResultSet rs = stmt.executeQuery()) {
 
